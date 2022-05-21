@@ -10,17 +10,34 @@ namespace MorseCodeAPP
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Please type a message to convert");
-            string userinput = Console.ReadLine();
-            string morsecode = MorseConvert.Tomorse(userinput);
-            Console.WriteLine("beging morsecode playback, press any key to continue");
-            Console.ReadKey();
-            MorseSound.Playmorse(morsecode);
-
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            while (true)
+            {
+                Console.WriteLine("Welcome to my morsecode app");
+                Console.WriteLine("please make a selection");
+                Console.WriteLine("1.) Convert a string to morse code");
+                Console.WriteLine("2.) Quit the program");
+                string menuselect = Console.ReadLine();
+                if (menuselect == "1")
+                {
+                    Console.WriteLine("Please type a message to convert");
+                    string userinput = Console.ReadLine();
+                    string morsecode = MorseConvert.Tomorse(userinput);
+                    Console.WriteLine(morsecode);
+                    Console.WriteLine("Would you like this played ? y/n");
+                    menuselect = Console.ReadLine();
+                    if (menuselect == "y")
+                    {
+                        Console.WriteLine("beging morsecode playback, press any key to continue");
+                        Console.ReadKey();
+                        MorseSound.Playmorse(morsecode);
+                    }
+                }
+                if (menuselect == "2")
+                {
+                    Environment.Exit(0);
+                }
+            }
+            
         }
     }
 }
