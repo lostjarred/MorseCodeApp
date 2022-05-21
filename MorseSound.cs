@@ -8,7 +8,7 @@ namespace MorseCodeAPP
 {
     public static class MorseSound
     {
-        static int ditduration = 100;
+        static int ditduration = 150;
         static int dahduration = ditduration * 3;
         static int morsebeepfreq = 800;
 
