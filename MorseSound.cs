@@ -21,13 +21,24 @@ namespace MorseCodeAPP
             Console.Beep(morsebeepfreq, ditduration * 3);
         }
 
+        public static void Playspace()
+        {
+            int pausetime = DateTime.Now.Millisecond + ditduration;
+            int time = DateTime.Now.Millisecond;
+            while (time < pausetime)
+            {
+                time = time + DateTime.Now.Millisecond;
+            }
+
+        }
+
         public static void Playmorse(string morsecode)
         {
             for (int i = 0; i < morsecode.Length; i++)
             {
                 if (morsecode[i].ToString() == ".") { Playdit(); }
                 if (morsecode[i].ToString() == "-") { Playdah(); }
-                if (morsecode[i].ToString() == " ") { Playdit(); }
+                if (morsecode[i].ToString() == " ") { Playspace(); }
             }
         }
     }
