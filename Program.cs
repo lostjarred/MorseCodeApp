@@ -27,7 +27,7 @@ namespace MorseCodeAPP
                     menuselect = Console.ReadLine();
                     if (menuselect == "y")
                     {
-                        Console.WriteLine("beging morsecode playback, press any key to continue");
+                        Console.WriteLine("beginning morsecode playback, press any key to continue");
                         Console.ReadKey();
                         MorseSound.Playmorse(morsecode);
                     }
