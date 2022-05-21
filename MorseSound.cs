@@ -9,6 +9,7 @@ namespace MorseCodeAPP
     public static class MorseSound
     {
         static int ditduration = 100;
+        static int dahduration = ditduration * 3;
         static int morsebeepfreq = 800;
 
         public static void Playdit()
@@ -18,7 +19,7 @@ namespace MorseCodeAPP
 
         public static void Playdah()
         {
-            Console.Beep(morsebeepfreq, ditduration * 3);
+            Console.Beep(morsebeepfreq, dahduration);
         }
 
         public static void Playspace()
@@ -39,6 +40,7 @@ namespace MorseCodeAPP
                 if (morsecode[i].ToString() == ".") { Playdit(); }
                 if (morsecode[i].ToString() == "-") { Playdah(); }
                 if (morsecode[i].ToString() == " ") { Playspace(); }
+                System.Threading.Thread.Sleep(ditduration);
             }
         }
     }
