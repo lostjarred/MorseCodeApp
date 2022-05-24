@@ -10,6 +10,7 @@ namespace MorseCodeAPP
     {
         static void Main(string[] args)
         {
+            Console.Title = "Morse Code App";
             while (true)
             {
                 Console.WriteLine("Welcome to my morsecode app");
