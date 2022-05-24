@@ -37,10 +37,11 @@ namespace MorseCodeAPP
         {
             for (int i = 0; i < morsecode.Length; i++)
             {
+                Console.WriteLine("Curent Playing symbol " + i.ToString() + "/" + morsecode.Length.ToString());
                 if (morsecode[i].ToString() == ".") { Playdit(); }
                 if (morsecode[i].ToString() == "-") { Playdah(); }
                 if (morsecode[i].ToString() == " ") { Playspace(); }
-                System.Threading.Thread.Sleep(ditduration);
+                System.Threading.Thread.Sleep(ditduration + 50);
             }
         }
     }
