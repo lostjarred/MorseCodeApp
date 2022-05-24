@@ -61,5 +61,11 @@ namespace MorseCodeAPP
             }
             return outputstring;
         }
+
+        public static string Sanitizestring(string incomingstring)
+        {
+            Console.WriteLine("Sanitizing string");
+            return incomingstring.ToLower();
+        }
     }
 }

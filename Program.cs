@@ -21,7 +21,7 @@ namespace MorseCodeAPP
                 {
                     Console.WriteLine("Please type a message to convert");
                     string userinput = Console.ReadLine();
-                    string morsecode = MorseConvert.Tomorse(userinput);
+                    string morsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring(userinput));
                     Console.WriteLine(morsecode);
                     Console.WriteLine("Would you like this played ? y/n");
                     menuselect = Console.ReadLine();
