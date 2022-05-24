@@ -14,16 +14,19 @@ namespace MorseCodeAPP
 
         public static void Playdit()
         {
+            Console.WriteLine("Playing Dit");
             Console.Beep(morsebeepfreq, ditduration);
         }
 
         public static void Playdah()
         {
+            Console.WriteLine("Playing Dah");
             Console.Beep(morsebeepfreq, dahduration);
         }
 
         public static void Playspace()
         {
+            Console.WriteLine("Playing Space");
             int pausetime = DateTime.Now.Millisecond + ditduration;
             int time = DateTime.Now.Millisecond;
             while (time < pausetime)
