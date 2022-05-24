@@ -57,7 +57,7 @@ namespace MorseCodeAPP
             string outputstring = "";
             for (int i = 0; i < convertstring.Length; i++) {
                 outputstring = outputstring + Morsedict(convertstring[i].ToString()) + " ";
-                //Console.WriteLine(outputstring);
+                Console.WriteLine("Converting symbol " + (i + 1).ToString() + "/" + convertstring.Length.ToString());
             }
             return outputstring;
         }
