@@ -70,5 +70,17 @@ namespace MorseCodeAPP
             Console.WriteLine(incomingstring + " --> " + incomingstring.ToLower());
             return incomingstring.ToLower();
         }
+
+        public static bool Checkmorse(string morse)
+        {
+            bool result = false;
+            for (int i = 0; i < morse.Length; i++)
+            {
+                if (morse[i].ToString() == "#") {
+                    result = true;
+                }
+            }
+            return result;
+        }
     }
 }

@@ -24,6 +24,10 @@ namespace MorseCodeAPP
                     string userinput = Console.ReadLine();
                     string morsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring(userinput));
                     Console.WriteLine(morsecode);
+                    if (MorseConvert.Checkmorse(morsecode))
+                    {
+                        Console.WriteLine("Morse code contains symbols that could not be converted, they will be ignored");
+                    }
                     while (true)
                     {
                         Console.WriteLine("Would you like this played ? y/n");
