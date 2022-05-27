@@ -27,12 +27,7 @@ namespace MorseCodeAPP
         public static void Playspace()
         {
             Console.WriteLine("Playing Space");
-            int pausetime = DateTime.Now.Millisecond + ditduration;
-            int time = DateTime.Now.Millisecond;
-            while (time < pausetime)
-            {
-                time = time + DateTime.Now.Millisecond;
-            }
+            System.Threading.Thread.Sleep(ditduration);
 
         }
 
