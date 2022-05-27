@@ -39,6 +39,7 @@ namespace MorseCodeAPP
                 if (morsecode[i].ToString() == ".") { Playdit(); }
                 if (morsecode[i].ToString() == "-") { Playdah(); }
                 if (morsecode[i].ToString() == " ") { Playspace(); }
+                if (morsecode[i].ToString() == "#") { Console.WriteLine("unknown symbol, ignoring"); }
                 System.Threading.Thread.Sleep(ditduration + 50);
             }
         }
