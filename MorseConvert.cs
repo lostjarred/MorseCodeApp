@@ -49,7 +49,9 @@ namespace MorseCodeAPP
             if (letter == "9") { return "----."; }
             if (letter == "0") { return "-----"; }
             if (letter == " ") { return "   "; }
-            else { return "#"; }
+            else {
+                Console.WriteLine("Cannot convert symbol to morse --> " + letter);
+                return "#"; }
         }
 
         public static string Tomorse(string convertstring)
