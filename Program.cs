@@ -24,13 +24,21 @@ namespace MorseCodeAPP
                     string userinput = Console.ReadLine();
                     string morsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring(userinput));
                     Console.WriteLine(morsecode);
-                    Console.WriteLine("Would you like this played ? y/n");
-                    menuselect = Console.ReadLine();
-                    if (menuselect == "y")
+                    while (true)
                     {
-                        Console.WriteLine("beginning morsecode playback, press any key to continue");
-                        Console.ReadKey();
-                        MorseSound.Playmorse(morsecode);
+                        Console.WriteLine("Would you like this played ? y/n");
+                        menuselect = Console.ReadLine();
+                        if (menuselect == "y")
+                        {
+                            Console.WriteLine("beginning morsecode playback, press any key to continue");
+                            Console.ReadKey();
+                            MorseSound.Playmorse(morsecode);
+                            break;
+                        }
+                        if (menuselect == "n")
+                        {
+                            break;
+                        }
                     }
                 }
                 if (menuselect == "2")
