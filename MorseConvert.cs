@@ -57,8 +57,17 @@ namespace MorseCodeAPP
         public static string Tomorse(string convertstring)
         {
             string outputstring = "";
+            string convertcharstring = "";
             for (int i = 0; i < convertstring.Length; i++) {
-                outputstring = outputstring + Morsedict(convertstring[i].ToString()) + " ";
+                convertcharstring = convertstring[i].ToString();
+                if (Morsedict(convertcharstring) == "#")
+                {
+                    outputstring = outputstring + Morsedict(convertcharstring);
+                }
+                else{
+                    outputstring = outputstring + Morsedict(convertcharstring) + " ";
+                }
+                outputstring = outputstring + Morsedict(convertcharstring) + " ";
                 Console.WriteLine("Converting symbol " + (i + 1).ToString() + "/" + convertstring.Length.ToString());
             }
             return outputstring;
