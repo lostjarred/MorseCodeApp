@@ -10,7 +10,7 @@ namespace MorseCodeAPP
     {
         static MorseDict_International internationdict = new MorseDict_International();
 
-        public static string Tomorse(string convertstring)
+        public string Tomorse(string convertstring)
         {
             string outputstring = "";
             string convertcharstring = "";
@@ -28,14 +28,14 @@ namespace MorseCodeAPP
             return outputstring;
         }
 
-        public static string Sanitizestring(string incomingstring)
+        public string Sanitizestring(string incomingstring)
         {
             Console.WriteLine("Sanitizing string");
             Console.WriteLine(incomingstring + " --> " + incomingstring.ToLower());
             return incomingstring.ToLower();
         }
 
-        public static bool Checkmorse(string morse)
+        public bool Checkmorse(string morse)
         {
             bool result = false;
             for (int i = 0; i < morse.Length; i++)

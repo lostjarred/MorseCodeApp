@@ -10,8 +10,11 @@ namespace MorseCodeAPP
     {
         static void Main(string[] args)
         {
+            
+            MorseSound morseoundplayer = new MorseSound(80, 800);
+            MorseConvert morseconverter = new MorseConvert();
+            
             Console.Title = "Morse Code App";
-            MorseSound morseoundplayer = new MorseSound(150, 800);
             while (true)
             {
                 Console.WriteLine("Welcome to my morsecode app");
@@ -24,9 +27,9 @@ namespace MorseCodeAPP
                 {
                     Console.WriteLine("Please type a message to convert");
                     string userinput = Console.ReadLine();
-                    string morsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring(userinput));
+                    string morsecode = morseconverter.Tomorse(morseconverter.Sanitizestring(userinput));
                     Console.WriteLine(morsecode);
-                    if (MorseConvert.Checkmorse(morsecode))
+                    if (morseconverter.Checkmorse(morsecode))
                     {
                         Console.WriteLine("Morse code contains symbols that could not be converted, they will be ignored");
                     }
@@ -59,7 +62,7 @@ namespace MorseCodeAPP
                         if (menuselect == "1")
                         {
                             Console.WriteLine("Begining Stage 1 Encoding test");
-                            string testmorsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring("hello"));
+                            string testmorsecode = morseconverter.Tomorse(morseconverter.Sanitizestring("hello!!!"));
                             Console.WriteLine(testmorsecode);
                             Console.WriteLine("Begining Stage 2 Playback test");
                             Console.WriteLine("Press any key to continue");
