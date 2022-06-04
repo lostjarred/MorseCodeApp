@@ -50,8 +50,7 @@ namespace MorseCodeAPP
         public string getmorsecode(string letter)
         {
             string output = "#";
-
-            for (int i = 0; i < internation_dict.Length; i++)
+            for (int i = 0; i < internation_dict.GetLength(0); i++)
             {
                 if (letter == internation_dict[i, 0])
                 {
