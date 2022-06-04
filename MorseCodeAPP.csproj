@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MorseDict_International.cs" />
     <Compile Include="MorseSound.cs" />
     <Compile Include="MorseConvert.cs" />
     <Compile Include="Program.cs" />
