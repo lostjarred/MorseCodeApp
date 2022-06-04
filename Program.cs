@@ -17,7 +17,8 @@ namespace MorseCodeAPP
                 Console.WriteLine("Welcome to my morsecode app");
                 Console.WriteLine("please make a selection");
                 Console.WriteLine("1.) Convert a string to morse code");
-                Console.WriteLine("2.) Quit the program");
+                Console.WriteLine("2.) Access test menu");
+                Console.WriteLine("3.) Quit the program");
                 string menuselect = Console.ReadLine();
                 if (menuselect == "1")
                 {
@@ -46,7 +47,33 @@ namespace MorseCodeAPP
                         }
                     }
                 }
+                
                 if (menuselect == "2")
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Test menu listing");
+                        Console.WriteLine("1.) Test Morse Code Encoding/Playback");
+                        Console.WriteLine("2.) return to main menu");
+                        menuselect = Console.ReadLine();
+                        if (menuselect == "1")
+                        {
+                            Console.WriteLine("Begining Stage 1 Encoding test");
+                            string testmorsecode = MorseConvert.Tomorse(MorseConvert.Sanitizestring("hello"));
+                            Console.WriteLine(testmorsecode);
+                            Console.WriteLine("Begining Stage 2 Playback test");
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            morseoundplayer.Playmorse(testmorsecode);
+                        }
+                        if (menuselect == "2")
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+                if (menuselect == "3")
                 {
                     Environment.Exit(0);
                 }
