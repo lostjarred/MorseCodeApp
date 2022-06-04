@@ -11,7 +11,7 @@ namespace MorseCodeAPP
         static void Main(string[] args)
         {
             Console.Title = "Morse Code App";
-
+            MorseSound morseoundplayer = new MorseSound(150, 800);
             while (true)
             {
                 Console.WriteLine("Welcome to my morsecode app");
@@ -37,7 +37,7 @@ namespace MorseCodeAPP
                         {
                             Console.WriteLine("beginning morsecode playback, press any key to continue");
                             Console.ReadKey();
-                            MorseSound.Playmorse(morsecode);
+                            morseoundplayer.Playmorse(morsecode);
                             break;
                         }
                         if (menuselect == "n")

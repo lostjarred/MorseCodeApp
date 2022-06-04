@@ -6,32 +6,40 @@ using System.Threading.Tasks;
 
 namespace MorseCodeAPP
 {
-    public static class MorseSound
+    public class MorseSound
     {
-        static int ditduration = 150;
-        static int dahduration = ditduration * 3;
-        static int morsebeepfreq = 800;
+        static int ditlength;
+        static int dahlength;
+        static int morsebeepfreq;
+
+        public MorseSound(int ditduration, int morsefreq)
+        {
+            ditlength = ditduration;
+            dahlength = ditlength * 3;
+            morsebeepfreq = morsefreq;
+        }
+        
 
         public static void Playdit()
         {
             Console.WriteLine("Playing Dit");
-            Console.Beep(morsebeepfreq, ditduration);
+            Console.Beep(morsebeepfreq, ditlength);
         }
 
         public static void Playdah()
         {
             Console.WriteLine("Playing Dah");
-            Console.Beep(morsebeepfreq, dahduration);
+            Console.Beep(morsebeepfreq, dahlength);
         }
 
         public static void Playspace()
         {
             Console.WriteLine("Playing Space");
-            System.Threading.Thread.Sleep(ditduration);
+            System.Threading.Thread.Sleep(ditlength);
 
         }
 
-        public static void Playmorse(string morsecode)
+        public void Playmorse(string morsecode)
         {
             for (int i = 0; i < morsecode.Length; i++)
             {
@@ -40,7 +48,7 @@ namespace MorseCodeAPP
                 if (morsecode[i].ToString() == "-") { Playdah(); }
                 if (morsecode[i].ToString() == " ") { Playspace(); }
                 if (morsecode[i].ToString() == "#") { Console.WriteLine("unknown symbol, ignoring"); }
-                System.Threading.Thread.Sleep(ditduration + 50);
+                System.Threading.Thread.Sleep(50);
             }
         }
     }
