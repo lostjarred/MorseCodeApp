@@ -9,10 +9,6 @@ namespace MorseCodeAPP
     public static class MorseConvert
     {
         static MorseDict_International internationdict = new MorseDict_International();
-        private static string Morsedict(string letter)
-        {
-            return internationdict.getmorsecode(letter);
-        }
 
         public static string Tomorse(string convertstring)
         {
@@ -20,12 +16,12 @@ namespace MorseCodeAPP
             string convertcharstring = "";
             for (int i = 0; i < convertstring.Length; i++) {
                 convertcharstring = convertstring[i].ToString();
-                if (Morsedict(convertcharstring) == "#")
+                if (internationdict.getmorsecode(convertcharstring) == "#")
                 {
-                    outputstring = outputstring + Morsedict(convertcharstring);
+                    outputstring = outputstring + internationdict.getmorsecode(convertcharstring);
                 }
                 else{
-                    outputstring = outputstring + Morsedict(convertcharstring) + " ";
+                    outputstring = outputstring + internationdict.getmorsecode(convertcharstring) + " ";
                 }
                 Console.WriteLine("Converting symbol " + (i + 1).ToString() + "/" + convertstring.Length.ToString());
             }
