@@ -63,7 +63,16 @@ namespace MorseCodeAPP
 
         public string getletter(string morsecode)
         {
-            return "";
+            string output = "#";
+            for (int i = 0; i < internation_dict.GetLength(0); i++)
+            {
+                if (morsecode == internation_dict[i, 1])
+                {
+                    output = internation_dict[i, 0];
+                    break;
+                }
+            }
+            return output;
         }
     }
 }

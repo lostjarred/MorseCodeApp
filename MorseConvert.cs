@@ -28,6 +28,39 @@ namespace MorseCodeAPP
             return outputstring;
         }
 
+        public string MorseDecode(string convertstring)
+        {
+            //need to get a section of morse code,these int hold start and end point of string
+            int morsestart = 0;
+            int morsestop = 0;
+            string morsecodefrag = "";
+            string outputstring = "";
+
+            //for loop to go though string
+            for (int i = 0; i < convertstring.Length; i++)
+            {
+                //need to search for spaces
+                //if found update morsestop
+                if (convertstring[i].ToString() == " ")
+                {
+                    morsestop = i;
+                    //small for loop to build string of morse fragment
+                    Console.WriteLine("Found morse fragment");
+                    for(int mf = morsestart; mf < morsestop; mf++)
+                    {
+                        morsecodefrag = morsecodefrag + convertstring[mf].ToString();
+                    }
+                    Console.WriteLine(morsecodefrag);
+                    string morseletter = internationdict.getletter(morsecodefrag);
+                    Console.WriteLine("Decoding --> " + morseletter);
+                    outputstring = outputstring + morseletter;
+                    morsecodefrag = "";
+                    morsestart = (i + 1);
+                }
+            }
+            return outputstring;
+        }
+
         public string Sanitizestring(string incomingstring)
         {
             Console.WriteLine("Sanitizing string");

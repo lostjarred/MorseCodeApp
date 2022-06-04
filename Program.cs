@@ -57,7 +57,8 @@ namespace MorseCodeAPP
                     {
                         Console.WriteLine("Test menu listing");
                         Console.WriteLine("1.) Test Morse Code Encoding/Playback");
-                        Console.WriteLine("2.) return to main menu");
+                        Console.WriteLine("2.) Test Morse Code Decode");
+                        Console.WriteLine("3.) return to main menu");
                         menuselect = Console.ReadLine();
                         if (menuselect == "1")
                         {
@@ -69,7 +70,13 @@ namespace MorseCodeAPP
                             Console.ReadKey();
                             morseoundplayer.Playmorse(testmorsecode);
                         }
+                        
                         if (menuselect == "2")
+                        {
+                            Console.WriteLine(morseconverter.MorseDecode(".... . .-.. .-.. --- "));
+                        }
+                        
+                        if (menuselect == "3")
                         {
                             break;
                         }
