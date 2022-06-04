@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MorseCodeAPP
 {
-    public static class MorseConvert
+    public class MorseConvert
     {
         static MorseDict_International internationdict = new MorseDict_International();
 
