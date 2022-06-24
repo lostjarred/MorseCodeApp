@@ -8,9 +8,10 @@ namespace MorseCodeAPP
 {
     public class MorseSound
     {
-        static int ditlength;
-        static int dahlength;
-        static int morsebeepfreq;
+        int ditlength;
+        int dahlength;
+        int morsebeepfreq;
+
 
         public MorseSound(int ditduration, int morsefreq)
         {
@@ -20,19 +21,19 @@ namespace MorseCodeAPP
         }
         
 
-        public static void Playdit()
+        public void Playdit()
         {
             Console.WriteLine("Playing Dit");
             Console.Beep(morsebeepfreq, ditlength);
         }
 
-        public static void Playdah()
+        public void Playdah()
         {
             Console.WriteLine("Playing Dah");
             Console.Beep(morsebeepfreq, dahlength);
         }
 
-        public static void Playspace()
+        public void Playspace()
         {
             Console.WriteLine("Playing Space");
             System.Threading.Thread.Sleep(ditlength);
