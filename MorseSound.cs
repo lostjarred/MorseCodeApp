@@ -11,31 +11,33 @@ namespace MorseCodeAPP
         int ditlength;
         int dahlength;
         int morsebeepfreq;
+        bool debug;
 
 
-        public MorseSound(int ditduration, int morsefreq)
+        public MorseSound(int ditduration, int morsefreq, bool debugmode)
         {
             ditlength = ditduration;
             dahlength = ditlength * 3;
             morsebeepfreq = morsefreq;
+            debug = debugmode;
         }
         
 
         public void Playdit()
         {
-            Console.WriteLine("Playing Dit");
+            if (debug) { Console.WriteLine("Playing Dit"); }
             Console.Beep(morsebeepfreq, ditlength);
         }
 
         public void Playdah()
         {
-            Console.WriteLine("Playing Dah");
+            if (debug) { Console.WriteLine("Playing Dah"); }
             Console.Beep(morsebeepfreq, dahlength);
         }
 
         public void Playspace()
         {
-            Console.WriteLine("Playing Space");
+            if (debug) { Console.WriteLine("Playing Space"); }
             System.Threading.Thread.Sleep(ditlength);
 
         }
