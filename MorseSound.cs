@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
@@ -12,19 +13,16 @@ namespace MorseCodeAPP
     {
         SignalGenerator morsegenerator;
         ISampleProvider ditsample;
-        ISampleProvider datsample;
+        ISampleProvider dahsample;
         int ditlength;
         int dahlength;
-        int morsebeepfreq;
         bool debug;
-        WaveOutEvent waveoutput;
 
 
         public MorseSound(int ditduration, int morsefreq, bool debugmode)
         {
             ditlength = ditduration;
             dahlength = ditlength * 3;
-            morsebeepfreq = morsefreq;
             debug = debugmode;
             morsegenerator = new SignalGenerator()
             {
@@ -32,22 +30,37 @@ namespace MorseCodeAPP
                 Frequency = morsefreq,
                 Type = SignalGeneratorType.Sin
             };
-            ditsample = morsegenerator.Take(TimeSpan.FromMilliseconds(ditduration));
-            datsample = morsegenerator.Take(TimeSpan.FromMilliseconds(dahlength));
-            waveoutput = new WaveOutEvent();
         }
         
 
         public void Playdit()
         {
+            ditsample = morsegenerator.Take(TimeSpan.FromMilliseconds(ditlength));
             if (debug) { Console.WriteLine("Playing Dit"); }
-            Console.Beep(morsebeepfreq, ditlength);
+            using (var wo = new WaveOutEvent())
+            {
+                wo.Init(ditsample);
+                wo.Play();
+                while (wo.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(10);
+                }
+            }
         }
 
         public void Playdah()
         {
+            dahsample = morsegenerator.Take(TimeSpan.FromMilliseconds(dahlength));
             if (debug) { Console.WriteLine("Playing Dah"); }
-            Console.Beep(morsebeepfreq, dahlength);
+            using (var wo = new WaveOutEvent())
+            {
+                wo.Init(dahsample);
+                wo.Play();
+                while (wo.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(10);
+                }
+            }
         }
 
         public void Playspace()
@@ -66,7 +79,6 @@ namespace MorseCodeAPP
                 if (morsecode[i].ToString() == "-") { Playdah(); }
                 if (morsecode[i].ToString() == " ") { Playspace(); }
                 if (morsecode[i].ToString() == "#") { Console.WriteLine("unknown symbol, ignoring"); }
-                System.Threading.Thread.Sleep(50);
             }
         }
     }
