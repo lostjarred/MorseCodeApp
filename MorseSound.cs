@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace MorseCodeAPP
 {
     public class MorseSound
     {
+        SignalGenerator morsegenerator;
+        ISampleProvider ditsample;
+        ISampleProvider datsample;
         int ditlength;
         int dahlength;
         int morsebeepfreq;
         bool debug;
+        WaveOutEvent waveoutput;
 
 
         public MorseSound(int ditduration, int morsefreq, bool debugmode)
@@ -20,6 +26,15 @@ namespace MorseCodeAPP
             dahlength = ditlength * 3;
             morsebeepfreq = morsefreq;
             debug = debugmode;
+            morsegenerator = new SignalGenerator()
+            {
+                Gain = 0.2,
+                Frequency = morsefreq,
+                Type = SignalGeneratorType.Sin
+            };
+            ditsample = morsegenerator.Take(TimeSpan.FromMilliseconds(ditduration));
+            datsample = morsegenerator.Take(TimeSpan.FromMilliseconds(dahlength));
+            waveoutput = new WaveOutEvent();
         }
         
 
