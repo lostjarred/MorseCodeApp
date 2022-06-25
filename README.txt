@@ -5,5 +5,5 @@ Simple app written in c#, can convet text to morse code and play the message bac
 
 Written in Visual Studio 2017 in c#
 
-using .NET Framework 4.6.1
+using .NET Framework 4.7.2
 Uses NAudio - https://github.com/naudio/NAudio
