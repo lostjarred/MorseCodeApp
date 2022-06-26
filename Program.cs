@@ -10,9 +10,9 @@ namespace MorseCodeAPP
     {
         static void Main(string[] args)
         {
-            bool debugmode = true;
+            bool debugmode = false;
 
-            MorseSound morseoundplayer = new MorseSound(50, 800, debugmode);
+            MorseSound morseoundplayer = new MorseSound(50, 500, debugmode);
             MorseConvert morseconverter = new MorseConvert();
             
             Console.Title = "Morse Code App";
