@@ -17,6 +17,7 @@ namespace MorseCodeAPP
         int ditlength;
         int dahlength;
         bool debug;
+        WaveOutEvent waveout;
 
 
         public MorseSound(int ditduration, int morsefreq, bool debugmode)
@@ -30,6 +31,7 @@ namespace MorseCodeAPP
                 Frequency = morsefreq,
                 Type = SignalGeneratorType.Sin
             };
+            waveout = new WaveOutEvent();
         }
         
 
@@ -37,13 +39,13 @@ namespace MorseCodeAPP
         {
             ditsample = morsegenerator.Take(TimeSpan.FromMilliseconds(ditlength));
             if (debug) { Console.WriteLine("Playing Dit"); }
-            using (var wo = new WaveOutEvent())
+            using (waveout)
             {
-                wo.Init(ditsample);
-                wo.Play();
-                while (wo.PlaybackState == PlaybackState.Playing)
+                waveout.Init(ditsample);
+                waveout.Play();
+                while (waveout.PlaybackState == PlaybackState.Playing)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(1);
                 }
             }
         }
@@ -52,13 +54,13 @@ namespace MorseCodeAPP
         {
             dahsample = morsegenerator.Take(TimeSpan.FromMilliseconds(dahlength));
             if (debug) { Console.WriteLine("Playing Dah"); }
-            using (var wo = new WaveOutEvent())
+            using (waveout)
             {
-                wo.Init(dahsample);
-                wo.Play();
-                while (wo.PlaybackState == PlaybackState.Playing)
+                waveout.Init(dahsample);
+                waveout.Play();
+                while (waveout.PlaybackState == PlaybackState.Playing)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(1);
                 }
             }
         }
